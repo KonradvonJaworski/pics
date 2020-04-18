@@ -3,17 +3,23 @@ import React from 'react';
 // Coponents to serch for data
 
 class SearchBar extends React.Component {
-  onInputChange(event) {
+  state = { term: '' };
+
+  onFormSubmit = (event) => {
     console.log(event.target.value);
-  }
+  };
 
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="field">
             <label>Image Search </label>
-            <input type="text" onChange={this.onInputChange} />
+            <input
+              type="text"
+              value={this.state.term}
+              onChange={(e) => this.setState({ term: e.target.value })}
+            />
           </div>
         </form>
       </div>
